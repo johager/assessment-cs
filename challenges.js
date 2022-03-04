@@ -107,7 +107,7 @@ findLongestWord(strs) has:
 
 time complexity of O(n) because it must loop over each string in the strs array
 
-space complexity of O(n) because str is created for each iteration of strs (see below)
+space complexity of O(n) because str is created for each iteration of strs (see below), and str can be arbitrarily large
 */
 
 // test(findLongestWord, ["hi", "hello"], 5)
@@ -128,7 +128,7 @@ console.log("    post:", strs)
 testArrayOfStrings(strs) changes the value of str on each iteration, yet strs before and after the function is the same,
 so str in the for-of loop is not just a pointer to the i-th index of str.
 
-This is also true for an array of numbers (below).
+This is also true for an array of numbers (below). However, a for-item-of-items loop for an array of numbers would have spatial complexity of O(1) because a number can't have an arbitrarily-large storage.
 */
 
 function testArrayOfNumbers(nums) {
