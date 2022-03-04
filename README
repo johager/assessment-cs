@@ -23,7 +23,6 @@ addToZero([1, 2, 3]);
 addToZero([1, 2, 3, -2]);
 // -> True
 
-
 --- 2) Unique Characters ---
 Write a function that takes in a single word, as a string. It should return True if that word contains only unique characters. Return False otherwise.
 
