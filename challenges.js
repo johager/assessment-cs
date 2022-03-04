@@ -19,9 +19,9 @@ test(func, inp, exp) reports success as a string so the VSCode terminal will tin
 
 function addToZero(nums) {
     // see if any numbers in the nums array sum to zero
-    // if (nums.length < 2) {
-    //     return false
-    // }
+    if (nums.length < 2) {
+        return false
+    }
     for (let i=0; i<nums.length-1; i++) {
         for (let j=i+1; j<nums.length; j++) {
             if (nums[i] + nums[j] === 0) {
@@ -36,7 +36,7 @@ function addToZero(nums) {
 /*
 addToZero(nums) has:
 
-time complexity O(n^2) due to the nested loops over essentially the whole array of numbers
+time complexity O(n^2) due to the nested loops over essentially the whole array of numbers. (Maybe O(n^1.5) would be more appropriate?)
 
 space complexity O(1) because nums is a pointer to an external array, and only i and j need to be created in the function
 */
@@ -64,8 +64,8 @@ time complexity of O(n) due to creating the uniqueChars Set
 space complexity of O(n) because the uniqueChars set must be created
 */
 
-// test(hasUniqueChars, 'Monday', true)
-// test(hasUniqueChars, 'Moonday', false)
+test(hasUniqueChars, 'Monday', true)
+test(hasUniqueChars, 'Moonday', false)
 
 //
 // === isPangram ===
@@ -73,7 +73,7 @@ space complexity of O(n) because the uniqueChars set must be created
 
 function isPangram(str) {
     // determine if str is a pangram
-    const alpha = str.replace(/[^a-z0-9]/gi, '').toLowerCase()
+    const alpha = str.toLowerCase().replace(/[^a-z]/g, '')
     const chars = new Set(alpha)
     return chars.size === 26
 }
@@ -81,13 +81,13 @@ function isPangram(str) {
 /*
 isPangram(str) has:
 
-time complexity of O(n) because it must "loop over" each item of alpha when making the chars set
+time complexity of O(n) because it must "loop over" each item of str to create alpha and also "loop over" alpha when making the chars set. That's assuming that str can be arbitrarily large. In practice, str would probably never be greater than 100, so the time-complexity would be O(1).
 
 space complexity of O(1) because chars can be no larger than 26
 */
 
-// test(isPangram, 'The quick brown fox jumps over the lazy dog!', true)
-// test(isPangram, 'I like cats, but not mice', false)
+test(isPangram, 'The quick brown fox jumps over the lazy dog!', true)
+test(isPangram, 'I like cats, but not mice', false)
 
 //
 // === findLongestWord ===
@@ -110,38 +110,51 @@ time complexity of O(n) because it must loop over each string in the strs array
 space complexity of O(n) because str is created for each iteration of strs (see below), and str can be arbitrarily large
 */
 
-// test(findLongestWord, ["hi", "hello"], 5)
+test(findLongestWord, ["hi", "hello"], 5)
 
 function testArrayOfStrings(strs) {
-    let maxLength = 0
     for (let str of strs) {
         str = '123'
     }
 }
 
-let strs = ['abc','xyz']
+const strs = ['abc','xyz']
 console.log("pre strs:", strs)
 testArrayOfStrings(strs)
 console.log("    post:", strs)
 
 /*
 testArrayOfStrings(strs) changes the value of str on each iteration, yet strs before and after the function is the same,
-so str in the for-of loop is not just a pointer to the i-th index of str.
+so str in the for-item-of-items loop is not just a pointer to the i-th index of str. Because a string can be arbitrarily long, the for-of loop would have spatial complexity of O(n).
 
-This is also true for an array of numbers (below). However, a for-item-of-items loop for an array of numbers would have spatial complexity of O(1) because a number can't have an arbitrarily-large storage.
+See the test functions below that show a for-item-of-items loop for an array of numbers and for an array of arrays creates a new instance of the item in question.
+
+A for-item-of-items loop for an array of numbers would have spatial complexity of O(1) because a number can't have an arbitrarily-large storage.
+
+A for-item-of-items loop for an array of arrays would have spatial complexity of O(n) because the inner array can be arbitrarily long.
 */
 
 function testArrayOfNumbers(nums) {
-    let maxLength = 0
     for (let num of nums) {
         num = 9
     }
 }
 
-let nums = [1,2,3]
+const nums = [1,2,3]
 console.log("pre nums:", nums)
 testArrayOfNumbers(nums)
 console.log("    post:", nums)
+
+function testArrayOfArrays(arrs) {
+    for (let arr of arrs) {
+        arr = [6,7,8]
+    }
+}
+
+const arrs = [[1,2,3],['a','b','c']]
+console.log("pre arrs:", arrs)
+testArrayOfArrays(arrs)
+console.log("    post:", arrs)
 
 //
 // === findLongestWord version 2===
