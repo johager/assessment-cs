@@ -36,7 +36,7 @@ function addToZero(nums) {
 /*
 addToZero(nums) has:
 
-time complexity O(n^2) due to the nested loops over essentially the whole array of numbers. (Maybe O(n^1.5) would be more appropriate?)
+time complexity O(n^2) due to the nested loops over essentially the whole array of numbers.
 
 space complexity O(1) because nums is a pointer to an external array, and only i and j need to be created in the function
 */
