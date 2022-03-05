@@ -1,6 +1,8 @@
 === Part 1 ===
 
-The runtime.* files are for testing the JavaScript .push() and .unshift() functions.
+The runtime.* files are for testing the JavaScript .push() and .unshift() functions wrapped in a for-loop over an array.
+
+The timing.xlsx and timing_doubler.pdf files contain the timing data obtained from runtime.js.
 
 === Part 2 ===
 
@@ -54,3 +56,10 @@ For example:
 
 findLongestWord(["hi", "hello"]);
 // -> 5
+
+
+=== Extra ===
+
+The timing.xlsx file also includes a second sheet (Linear vs Quadratic) which demonstrates what a log-log plot looks like for a linear (O(1)) and a quadratic (O(n^2)) function. The slope of the line represents the order of the function.
+
+The timing.xlsx file includes a third sheet (Timing AddToZero) which contains timing data for my addToZero function in challenges.js. The curve shows a nice O(n^2) behavior for 100,000 and 1,000,000 numbers.

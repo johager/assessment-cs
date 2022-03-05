@@ -62,7 +62,7 @@ function getSizedArray(size){
 // console.log("append", resultsAppend.preciseWords);
 
 function timeDoublers() {
-    const sizes = [10,100,1000,10000,100000]
+    const sizes = [10,100,1000,10000,100000,1000000]
 
     for (let size of sizes) {
         const arr = getSizedArray(size)
